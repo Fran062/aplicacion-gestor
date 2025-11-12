@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  postgresdb:
+    image: 'postgres:15-alpine'
+    container_name: postgresdb_container
+    restart: always
+    environment:
+      POSTGRES_DB: dbgestor
+      POSTGRES_USER: gestor-user
+      POSTGRES_PASSWORD: gestor-pass
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  app:
+    build: .
+    container_name: springboot_app_container
+    restart: on-failure
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgresdb
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgresdb:5432/dbgestor
+      SPRING_DATASOURCE_USERNAME: gestor-user
+      SPRING_DATASOURCE_PASSWORD: gestor-pass
+
+volumes:
+  postgres_data:
