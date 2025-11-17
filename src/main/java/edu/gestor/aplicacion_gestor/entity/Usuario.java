@@ -1,5 +1,6 @@
 package edu.gestor.aplicacion_gestor.entity;
 
+import java.util.List;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -42,5 +43,51 @@ public class Usuario {
 
     @OneToMany(mappedBy = "usuario")
     private Set<Comentario> comentarios;
+
+
+    public Integer getId_usuario() {
+        return idUsuario;
+    }
+
+    public void setId_usuario(Integer id_usuario) {
+        this.idUsuario = id_usuario;
+    }
+
+    public String getNombreUsuario() {
+        return nombreUsuario;
+    }
+
+    public void setNombreUsuario(String nombreUsuario) {
+        this.nombreUsuario = nombreUsuario;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public String getContraseña() {
+        return contrasena;
+    }
+
+    public void setContraseña(String contraseña) {
+        this.contrasena = contraseña;
+    }
+
+    public Integer getRol() {
+        return rolId;
+    }
+
+    public void setRol(Integer rol) {
+        this.rolId = rol;
+    }
+
+    @Override
+    public String toString() {
+        return "ID: " + getId_usuario() + ", nombre: " + getNombreUsuario() + ", contraseña: " + getContraseña() + ", correo: " + getCorreo() + ", rol_id: " + getRol() + ".";
+    }
 
 }
