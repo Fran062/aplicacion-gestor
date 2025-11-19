@@ -29,12 +29,39 @@ public class Comentario {
     private LocalDateTime fecha;
 
     @ManyToOne
-    @JoinColumn(name = "id_tarea")
+    @JoinColumn(name = "idTarea")
     private Tarea tarea;
 
 
     @ManyToOne
-    @JoinColumn(name = "id_usuario")
+    @JoinColumn(name = "idUsuario")
     private Usuario usuario;
+
+    public Comentario() {
+    }
+
+    public Integer getIdComentario() {
+        return idComentario;
+    }
+
+    public void setIdComentario(Integer idComentario) {
+        this.idComentario = idComentario;
+    }
+
+    public String getContenido() {
+        return contenido;
+    }
+
+    public void setContenido(String contenido) {
+        this.contenido = contenido;
+    }
+
+    public LocalDateTime getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(LocalDateTime fecha) {
+        this.fecha = fecha;
+    }
 
 }

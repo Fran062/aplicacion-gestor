@@ -20,4 +20,8 @@ public class TareaService {
     public Tarea save(Tarea tarea) {
         return tareaRepositorio.save(tarea);
     }
+
+    public void eliminarTarea(Long id) {
+        tareaRepositorio.deleteById(id);
+    }
 }

@@ -1,9 +1,6 @@
 package edu.gestor.aplicacion_gestor.entity;
 
-import java.util.List;
 import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -23,16 +20,16 @@ public class Usuario {
     @Column(name = "id_usuario")
     private Integer idUsuario;
 
-    @Column(name = "nombre_usuario", length = 100)
+    @Column(name = "nombre", length = 100)
     private String nombreUsuario;
 
     @Column(name = "correo", length = 100, unique = true)
     private String correo;
 
-    @Column(name = "contraseña", length = 255)
+    @Column(name = "contrasena", length = 255)
     private String contrasena;
 
-    @Column(name = "rol_id")
+    @Column(name = "rol")
     private Integer rolId;
 
     @ManyToMany(mappedBy = "usuarios")
@@ -43,6 +40,9 @@ public class Usuario {
 
     @OneToMany(mappedBy = "usuario")
     private Set<Comentario> comentarios;
+
+    public Usuario() {
+    }
 
 
     public Integer getId_usuario() {
@@ -73,8 +73,8 @@ public class Usuario {
         return contrasena;
     }
 
-    public void setContraseña(String contraseña) {
-        this.contrasena = contraseña;
+    public void setContraseña(String contrasena) {
+        this.contrasena = contrasena;
     }
 
     public Integer getRol() {
@@ -84,10 +84,4 @@ public class Usuario {
     public void setRol(Integer rol) {
         this.rolId = rol;
     }
-
-    @Override
-    public String toString() {
-        return "ID: " + getId_usuario() + ", nombre: " + getNombreUsuario() + ", contraseña: " + getContraseña() + ", correo: " + getCorreo() + ", rol_id: " + getRol() + ".";
-    }
-
 }

@@ -13,11 +13,19 @@ public class ComentarioService {
     @Autowired
     private ComentariosRepositorio comentarioRepositorio;
 
+    public ComentarioService(ComentariosRepositorio comentarioRepositorio) { 
+        this.comentarioRepositorio = comentarioRepositorio;
+    }
+
     public List<Comentario> findAll() {
         return comentarioRepositorio.findAll();
     }
 
     public Comentario save(Comentario comentario) {
         return comentarioRepositorio.save(comentario);
+    }
+
+    public void eliminarComentario(Long id) {
+        comentarioRepositorio.deleteById(id);
     }
 }

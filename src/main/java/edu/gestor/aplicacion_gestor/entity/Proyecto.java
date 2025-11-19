@@ -31,10 +31,10 @@ public class Proyecto {
     @Column(name = "descripcion")
     private String descripcion;
 
-    @Column(name = "fecha_creacion")
-    private LocalDate fechaCreacion;
+    @Column(name = "fechaDeCreacion")
+    private LocalDate fechaDeCreacion;
 
-    @Column(name = "creado_por")
+    @Column(name = "creadoPor")
     private Integer creadoPor;
 
     @ManyToMany
@@ -48,4 +48,46 @@ public class Proyecto {
     @OneToMany(mappedBy = "proyecto")
     private Set<Tarea> tareas;
 
+    public Proyecto() {
+    }
+
+    public Integer getIdProyecto() {
+        return idProyecto;
+    }
+
+    public void setIdProyecto(Integer idProyecto) {
+        this.idProyecto = idProyecto;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public LocalDate getFechaCreacion() {
+        return fechaDeCreacion;
+    }
+
+    public void setFechaCreacion(LocalDate fechaCreacion) {
+        this.fechaDeCreacion = fechaCreacion;
+    }
+
+    public Integer getCreadoPor() {
+        return creadoPor;
+    }
+
+    public void setCreadoPor(Integer creadoPor) {
+        this.creadoPor = creadoPor;
+    }
 }

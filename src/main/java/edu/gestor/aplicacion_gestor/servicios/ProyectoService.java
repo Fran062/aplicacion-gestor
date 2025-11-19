@@ -13,11 +13,19 @@ public class ProyectoService {
     @Autowired
     private ProyectosRepositorio proyectoRepositorio;
 
-    public List<Proyecto> findAll() {
+    public ProyectoService(ProyectosRepositorio proyectoRepositorio) { 
+        this.proyectoRepositorio = proyectoRepositorio;
+    }
+
+    public List<Proyecto> buscarTodosLosProyectos() {
         return proyectoRepositorio.findAll();
     }
 
     public Proyecto save(Proyecto proyecto) {
         return proyectoRepositorio.save(proyecto);
+    }
+
+    public void eliminarProyecto(Long id) {
+        proyectoRepositorio.deleteById(id);
     }
 }
