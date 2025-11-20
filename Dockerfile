@@ -8,7 +8,7 @@ ARG JAR_FILE=target/*.jar
 # Copia el JAR generado al contenedor
 COPY ${JAR_FILE} app.jar
 
-# Puerto que expone el contenedor (debe coincidir con server.port)
+# Puerto que expone el contenedor
 EXPOSE 8080
 
 # Comando de ejecución al iniciar el contenedor

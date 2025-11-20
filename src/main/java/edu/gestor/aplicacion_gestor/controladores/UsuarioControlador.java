@@ -33,5 +33,12 @@ public class UsuarioControlador {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT); 
     }
 
+    @PutMapping("/modificar/{id}")
+    public ResponseEntity<Usuario> actualizarUsuario(@PathVariable Long id, @RequestBody Usuario usuarioActualizado) {
+        return usuarioService.actualizarUsuario(id, usuarioActualizado)
+            .map(usuarioModificado -> new ResponseEntity<>(usuarioModificado, HttpStatus.OK))
+            .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
 
 }
