@@ -11,6 +11,7 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
+
 @Entity
 @Table(name = "usuarios")
 public class Usuario {
