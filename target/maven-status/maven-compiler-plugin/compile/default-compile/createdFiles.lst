@@ -6,6 +6,7 @@ edu\gestor\aplicacion_gestor\repositorios\ComentariosRepositorio.class
 edu\gestor\aplicacion_gestor\repositorios\ProyectosRepositorio.class
 edu\gestor\aplicacion_gestor\controladores\ComentarioControlador.class
 edu\gestor\aplicacion_gestor\controladores\ProyectoControlador.class
+edu\gestor\aplicacion_gestor\config\CorsConfig.class
 edu\gestor\aplicacion_gestor\servicios\ProyectoService.class
 edu\gestor\aplicacion_gestor\controladores\TareaControlador.class
 edu\gestor\aplicacion_gestor\servicios\UsuarioService.class

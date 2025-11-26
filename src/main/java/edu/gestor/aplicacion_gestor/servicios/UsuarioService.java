@@ -50,4 +50,12 @@ public class UsuarioService {
             return Optional.empty();
         }
     }
+
+    public Optional<Usuario> obtenerUsuarioPorId(Long id) {
+        return usuarioRepositorio.findById(id); 
+    }
+
+    public Optional<Usuario> obtenerUsuarioPorNombreUsuario(String nombreUsuario) {
+        return usuarioRepositorio.findByNombreUsuario(nombreUsuario);
+    }
 }
