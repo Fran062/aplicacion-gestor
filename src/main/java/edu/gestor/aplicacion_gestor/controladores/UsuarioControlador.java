@@ -1,6 +1,7 @@
 
 package edu.gestor.aplicacion_gestor.controladores;
 
+import edu.gestor.aplicacion_gestor.dto.LoginDTO;
 import edu.gestor.aplicacion_gestor.entity.Usuario;
 import edu.gestor.aplicacion_gestor.servicios.UsuarioService;
 
@@ -51,7 +52,7 @@ public class UsuarioControlador {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @PostMapping("/nombre/{nombreUsuario}")
+    @GetMapping("/Nombre/{nombreUsuario}")
     public ResponseEntity<Usuario> obtenerUsuarioPorNombreUsuario(@PathVariable String nombreUsuario) {
         
         Optional<Usuario> usuario = usuarioService.obtenerUsuarioPorNombreUsuario(nombreUsuario);
@@ -60,4 +61,20 @@ public class UsuarioControlador {
         return usuario.map(ResponseEntity::ok)
                       .orElseGet(() -> ResponseEntity.notFound().build());
     }
+
+    @PostMapping("/login") 
+    public ResponseEntity<?> login(@RequestBody LoginDTO datos) {
+        
+        Optional<Usuario> usuario = usuarioService.autenticarUsuario(datos);
+
+        if (usuario.isPresent()) {
+            // Retorno Exitoso (200 OK)
+            return ResponseEntity.ok(usuario.get()); 
+        } else {
+            // Retorno de Fallo (401 Unauthorized o 403 Forbidden)
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Usuario o contraseña incorrectos.");
+        }
+    }
+
+    
 }

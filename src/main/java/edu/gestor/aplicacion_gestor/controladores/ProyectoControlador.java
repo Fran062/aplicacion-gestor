@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/proyectos")
@@ -26,9 +27,23 @@ public class ProyectoControlador {
         return proyectoService.save(proyecto);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/eliminar/{id}")
     public ResponseEntity<Void> eliminarProyecto(@PathVariable Long id) {
         proyectoService.eliminarProyecto(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT); 
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @PutMapping("/modificar/{id}")
+    public ResponseEntity<Proyecto> actualizarProyecto(@PathVariable Long id, @RequestBody Proyecto proyectoActualizado) {
+        return proyectoService.actualizarProyecto(id, proyectoActualizado)
+                .map(proyectoModificado -> new ResponseEntity<>(proyectoModificado, HttpStatus.OK))
+                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Proyecto> obtenerProyectoPorId(@PathVariable Long id) {
+        Optional<Proyecto> proyecto = proyectoService.obtenerProyectoPorId(id);
+        return proyecto.map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 }

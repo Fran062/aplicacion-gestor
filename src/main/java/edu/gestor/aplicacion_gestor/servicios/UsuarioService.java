@@ -4,8 +4,10 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import edu.gestor.aplicacion_gestor.repositorios.UsuariosRepositorio;
+import edu.gestor.aplicacion_gestor.dto.LoginDTO;
 import edu.gestor.aplicacion_gestor.entity.Usuario;
 
 @Service
@@ -13,6 +15,9 @@ public class UsuarioService {
     
     @Autowired
     private UsuariosRepositorio usuarioRepositorio;
+
+    @Autowired
+    private BCryptPasswordEncoder encriptadorContrasena;
 
     public UsuarioService(UsuariosRepositorio usuarioRepositorio) { 
         this.usuarioRepositorio = usuarioRepositorio;
@@ -23,6 +28,11 @@ public class UsuarioService {
     }
     
     public Usuario save(Usuario usuario) {
+        
+        String contrasenaTextoPlano = usuario.getContraseña();
+        String contrasenaHasheada = encriptadorContrasena.encode(contrasenaTextoPlano);
+        usuario.setContraseña(contrasenaHasheada);
+
         return usuarioRepositorio.save(usuario);
     }
 
@@ -57,5 +67,26 @@ public class UsuarioService {
 
     public Optional<Usuario> obtenerUsuarioPorNombreUsuario(String nombreUsuario) {
         return usuarioRepositorio.findByNombreUsuario(nombreUsuario);
+    }
+
+    public Optional<Usuario> autenticarUsuario( LoginDTO datos) {
+        Optional<Usuario> usuarioOpt = usuarioRepositorio.findByNombreUsuario(datos.getNombreUsuario());
+
+        if (usuarioOpt.isEmpty()) {
+            return Optional.empty();
+        }
+
+        Usuario usuario = usuarioOpt.get();
+        
+        boolean passwordMatch = encriptadorContrasena.matches(
+            datos.getContraseña(),
+            usuario.getContraseña()
+        );
+
+        if (passwordMatch) {
+            return Optional.of(usuario);
+        } else {
+            return Optional.empty();
+        }
     }
 }
