@@ -32,3 +32,8 @@ build/
 .vscode/
 
 catlr.txt
+
+target/
+.mvn/
+bin/
+.env
