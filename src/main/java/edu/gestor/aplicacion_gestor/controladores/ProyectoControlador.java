@@ -39,7 +39,7 @@ public class ProyectoControlador {
                 .map(proyectoModificado -> new ResponseEntity<>(proyectoModificado, HttpStatus.OK))
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
-
+   
     @GetMapping("/{id}")
     public ResponseEntity<Proyecto> obtenerProyectoPorId(@PathVariable Long id) {
         Optional<Proyecto> proyecto = proyectoService.obtenerProyectoPorId(id);
