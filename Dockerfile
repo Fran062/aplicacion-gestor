@@ -1,5 +1,5 @@
 # Usamos una imagen base de Java 17
-FROM eclipse-temurin:25-jre
+FROM maven:3.9.11-eclipse-temurin-25-alpine AS build
 
 # Especifica el nombre del archivo JAR generado.
 # Reemplaza 'nombre-de-tu-app.jar' con el nombre de tu archivo en la carpeta target.
