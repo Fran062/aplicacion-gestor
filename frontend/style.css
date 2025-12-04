@@ -1,0 +1,258 @@
+:root {
+  --primary: #0b4fa1;
+  --secondary: #f3f5f8;
+  --border: #dcdfe3;
+  --text: #333;
+  --radius: 12px;
+  --shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Roboto, sans-serif;
+  background-color: var(--secondary);
+  color: var(--text);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* CABECERA */
+header {
+  background-color: var(--primary);
+  color: white;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+header h1 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.header-buttons {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.header-buttons button {
+  background-color: white;
+  color: var(--primary);
+  border: none;
+  border-radius: var(--radius);
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.header-buttons button:hover {
+  background-color: #eaf1fc;
+  transform: translateY(-1px);
+}
+
+/* CONTENEDOR PRINCIPAL */
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  padding: 2rem;
+}
+
+/* LOGIN */
+.login-container {
+  background: white;
+  border-radius: var(--radius);
+  padding: 3rem 3.5rem;
+  box-shadow: var(--shadow);
+  text-align: center;
+  width: 100%;
+  max-width: 420px;
+}
+
+.login-container h2 {
+  font-style: italic;
+  font-size: 1.6rem;
+  margin-bottom: 2rem;
+}
+
+.login-container input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 1rem;
+}
+
+.login-container input:focus {
+  border-color: var(--primary);
+  outline: none;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius);
+  padding: 0.8rem 1.4rem;
+  width: 100%;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #093e81;
+}
+
+.login-links {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+.login-links a {
+  color: var(--primary);
+  text-decoration: none;
+  margin: 0 0.3rem;
+}
+
+.login-links a:hover {
+  text-decoration: underline;
+}
+
+/* DASHBOARD */
+.dashboard {
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  max-width: 900px;
+  width: 100%;
+  padding: 3rem;
+  display: flex;
+  justify-content: center;
+}
+
+.dashboard-content {
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.dashboard p {
+  color: #444;
+  line-height: 1.7;
+  font-size: 1.05rem;
+  margin-bottom: 2rem;
+}
+
+.dashboard img {
+  width: 200px;
+  height: 140px;
+  background: #e9edf2;
+  border-radius: var(--radius);
+}
+
+/* PROYECTOS */
+.project-list {
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 2.5rem;
+  max-width: 850px;
+  width: 100%;
+}
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.project-header h2 {
+  font-style: italic;
+  font-size: 1.5rem;
+}
+
+.new-project {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius);
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+.new-project:hover {
+  background-color: #093e81;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+th, td {
+  text-align: left;
+  padding: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+th {
+  font-size: 1rem;
+  color: #222;
+}
+
+tr:hover {
+  background-color: #f7f9fc;
+}
+
+.add-user {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.add-user:hover {
+  text-decoration: underline;
+}
+
+/* VISIBILIDAD */
+.hidden {
+  display: none;
+}
+
+/* TRANSICIONES */
+section {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+section.active-screen {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+body{
+
+  margin: 0;
+  padding: 0;
+}

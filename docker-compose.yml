@@ -27,5 +27,17 @@ services:
       SPRING_DATASOURCE_USERNAME: ${DB_USERNAME}
       SPRING_DATASOURCE_PASSWORD: ${DB_PASSWORD}
 
+
+  frontend:
+    image: 'nginx:stable-alpine' 
+    container_name: frontend_container
+    restart: always
+    ports:
+      - "5500:80" 
+    volumes:
+      - ./frontend:/usr/share/nginx/html 
+    depends_on:
+      - app
+
 volumes:
   postgres_data:

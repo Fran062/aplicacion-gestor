@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>CoWork - Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body class="bg-gray-100 text-gray-800 font-sans min-h-screen flex flex-col">
+    <header class="bg-[#0b4fa1] text-white shadow-md">
+      <div
+        class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center"
+      >
+        <div class="flex items-center gap-3">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-users-icon lucide-users"
+          >
+            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+            <path d="M16 3.128a4 4 0 0 1 0 7.744" />
+            <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+            <circle cx="9" cy="7" r="4" />
+          </svg>
+
+          <h1 class="text-lg font-semibold tracking-wide">CoWork</h1>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <a
+            href="listadoProyectos.html"
+            class="bg-white text-[#0b4fa1] px-4 py-2 rounded-xl font-medium hover:bg-blue-50 transition"
+            >Mis proyectos</a
+          >
+
+          <a
+            href="index.html"
+            class="bg-white text-[#0b4fa1] px-4 py-2 rounded-xl font-medium hover:bg-blue-50 transition"
+            aria-label="Cerrar sesión"
+            >Cerrar sesión</a
+          >
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="35"
+            height="35"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-user-icon lucide-user"
+            style="border-radius: 100%; border: solid white; padding: 1px"
+          >
+            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+            <circle cx="12" cy="7" r="4" />
+          </svg>
+        </div>
+      </div>
+    </header>
+
+    <main class="flex-1 flex flex-col items-center justify-center p-6">
+      <section
+        class="w-full max-w-4xl bg-white rounded-2xl shadow-lg p-10 flex flex-col gap-8"
+      >
+        <div>
+          <h2 class="text-3xl font-bold text-gray-800 mb-3">
+            Bienvenido/a a <span class="text-[#0b4fa1]">CoWork</span>
+          </h2>
+
+          <p class="text-gray-600 leading-relaxed max-w-2xl">
+            Aquí podrás gestionar tus proyectos, compartir documentos y
+            coordinar tareas con tu equipo de manera eficiente.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-4">
+            3 Tareas con fecha límite próxima.
+          </h3>
+
+          <div class="flex flex-col gap-3">
+            <a
+              href="gestionProyecto.html"
+              class="border rounded-xl p-4 hover:shadow-md transition bg-gray-300 block"
+            >
+              <p class="text-[#0b4fa1] font-semibold">Proyecto 4</p>
+
+              <p class="text-gray-500 text-sm">
+                Última actividad: Hace 5 minutos
+              </p>
+            </a>
+
+            <a
+              href="gestionProyecto.html"
+              class="border rounded-xl p-4 hover:shadow-md transition bg-gray-300 block"
+            >
+              <p class="text-[#0b4fa1] font-semibold">Proyecto 1</p>
+
+              <p class="text-gray-500 text-sm">Última actividad: Hace 1 día</p>
+            </a>
+
+            <a
+              href="gestionProyecto.html"
+              class="border rounded-xl p-4 hover:shadow-md transition bg-gray-300 block"
+            >
+              <p class="text-[#0b4fa1] font-semibold">Proyecto 3</p>
+
+              <p class="text-gray-500 text-sm">Última actividad: Hace 3 días</p>
+            </a>
+          </div>
+        </div>
+
+        <div class="pt-4">
+          <a
+            href="listadoProyectos.html"
+            class="bg-[#0b4fa1] text-white w-full sm:w-auto px-8 py-3 rounded-xl font-medium hover:bg-blue-800 transition text-center"
+            >Ir a Mis proyectos</a
+          >
+        </div>
+      </section>
+
+      <div
+      id="successToast"
+      class="fixed top-20 right-5 bg-green-500 text-white p-4 rounded-lg shadow-xl transition-opacity duration-300 opacity-0 transform translate-x-10 flex items-center gap-2"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="lucide lucide-check-circle"
+      >
+        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+        <polyline points="22 4 12 14.01 9 11.01" />
+      </svg>
+      <span class="font-medium">¡Inicio de sesión exitoso! Redirigiendo...</span>
+    </div>
+
+    <div
+      id="errorToast"
+      class="fixed top-20 right-5 bg-red-500 text-white p-4 rounded-lg shadow-xl transition-opacity duration-300 opacity-0 transform translate-x-10 flex items-center gap-2"
+    >
+      <svg 
+        xmlns="http://www.w3.org/2000/svg" 
+        width="24" 
+        height="24" 
+        viewBox="0 0 24 24" 
+        fill="none" 
+        stroke="currentColor" 
+        stroke-width="2" 
+        stroke-linecap="round" 
+        stroke-linejoin="round"
+        class="lucide lucide-x-circle">
+        <circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/>
+      </svg>
+      <span class="font-medium">Error de sesión. Datos incorrectos.</span>
+    </div>
+    </main>
+  </body>
+</html>
